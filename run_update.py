@@ -7,7 +7,7 @@ def generate_random_order():
     order_date = datetime.now() - timedelta(days=days_ago)
     customer_id = random.randint(1, 100)
     amount = round(random.uniform(10.0, 500.0), 2)
-    return order_date, customer_id, int(amount)
+    return order_date, customer_id, amount
 
 def insert_random_orders(conn, count=3):
     cursor = conn.cursor()
