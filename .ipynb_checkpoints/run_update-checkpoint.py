@@ -27,8 +27,10 @@ def main():
         "Trusted_Connection=yes;"
     )
     conn = pyodbc.connect(conn_str)
+    print(f"run_update.py starting to insert data to sql at {datetime.now()}...")
     insert_random_orders(conn)
     conn.close()
+    print(f"successfuly uploaded data to sql from run_update.py at {datetime.now()}")
 
 if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ def generate_random_order():
     amount = round(random.uniform(10.0, 500.0), 2)
     return order_date, customer_id, amount
 
-def insert_random_orders(conn, count=3):
+def insert_random_orders(conn, count=6):
     cursor = conn.cursor()
     for _ in range(count):
         order_date, customer_id, amount = generate_random_order()
@@ -27,10 +27,10 @@ def main():
         "Trusted_Connection=yes;"
     )
     conn = pyodbc.connect(conn_str)
-    print(f"run_update.py starting to insert data to sql at {datetime.now()}...")
+    print(f"run_update_2.py starting to insert data to sql at {datetime.now()}...")
     insert_random_orders(conn)
     conn.close()
-    print(f"successfuly uploaded data to sql from run_update.py at {datetime.now()}")
+    print(f"successfuly uploaded data to sql from run_update_2.py at {datetime.now()}")
 
 if __name__ == "__main__":
     main()
