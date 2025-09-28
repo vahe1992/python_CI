@@ -1,13 +1,9 @@
 import pyodbc
 import random
 from datetime import datetime, timedelta
+from helper import get_conn_str, generate_random_order
 
-def generate_random_order():
-    days_ago = random.randint(1, 30)
-    order_date = datetime.now() - timedelta(days=days_ago)
-    customer_id = random.randint(1, 100)
-    amount = round(random.uniform(10.0, 500.0), 2)
-    return order_date, customer_id, amount
+
 
 def insert_random_orders(conn, count=6):
     cursor = conn.cursor()
@@ -20,17 +16,13 @@ def insert_random_orders(conn, count=6):
     conn.commit()
 
 def main():
-    conn_str = (
-        "Driver={ODBC Driver 17 for SQL Server};"
-        "Server=DESKTOP-9C0956N;"
-        "Database=test;"
-        "Trusted_Connection=yes;"
-    )
+    conn_str = get_conn_str()
+    
     conn = pyodbc.connect(conn_str)
-    print(f"run_update_2.py starting to insert data to sql at {datetime.now()}...")
+    print(f"run_update.py starting to insert data to sql at {datetime.now()}...")
     insert_random_orders(conn)
     conn.close()
-    print(f"successfuly uploaded data to sql from run_update_2.py at {datetime.now()}")
+    print(f"successfuly uploaded data to sql from run_update.py at {datetime.now()}")
 
 if __name__ == "__main__":
     main()
