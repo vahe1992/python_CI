@@ -20,11 +20,6 @@ def get_conn_str():
         schema='TEST_SCHEMA'
     ))
 
-def get_conn_str_old():
-    return pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
-        "Server=host.docker.internal,1433;"
-        "Database=test;"
-        "UID=sqlauth;"
-        "PWD=qwerty;")
+
 
 # conn = get_conn_str()
