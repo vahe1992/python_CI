@@ -1,6 +1,7 @@
-# import pyodbc
+import pyodbc
 import random
 from datetime import datetime, timedelta
+import snowflake.connector
 
 def generate_random_order():
     days_ago = random.randint(1, 30)
@@ -9,13 +10,21 @@ def generate_random_order():
     amount = round(random.uniform(10.0, 500.0), 2)
     return order_date, customer_id, amount
 
-
-
 def get_conn_str():
-    return (
-        "Driver={ODBC Driver 17 for SQL Server};"
+    return (snowflake.connector.connect(
+        user='VAHIK92',
+        password='Hayastan.19922',
+        account='QTRACYN-GD73758',  # e.g. xy12345.us-east-1.aws
+        warehouse='COMPUTE_WH',
+        database='test',
+        schema='TEST_SCHEMA'
+    ))
+
+def get_conn_str_old():
+    return pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
         "Server=host.docker.internal,1433;"
         "Database=test;"
         "UID=sqlauth;"
-        "PWD=qwerty;"
-    )
+        "PWD=qwerty;")
+
+# conn = get_conn_str()
