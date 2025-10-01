@@ -12,12 +12,6 @@ def generate_random_order():
 
 def get_conn_str():
     return (snowflake.connector.connect(
-        user='VAHIK92',
-        password='Hayastan.19922',
-        account='QTRACYN-GD73758',  # e.g. xy12345.us-east-1.aws
-        warehouse='COMPUTE_WH',
-        database='test',
-        schema='TEST_SCHEMA'
     ))
 
 
